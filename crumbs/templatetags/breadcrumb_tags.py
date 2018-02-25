@@ -1,11 +1,5 @@
-from __future__ import unicode_literals
-
-import copy
-import pprint
-
 from django import template
-from django.template.loader import render_to_string
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from crumbs.templatetags import CaktNode, parse_args_kwargs
 
@@ -14,7 +8,7 @@ register = template.Library()
 
 
 class AddCrumbNode(CaktNode):
-    def render_with_args(self, context, crumb, url=None, *args):
+    def render_with_args(self, context, crumb, url=None, *args, **kwargs):
         href = None
         if url:
             if '/' in url:
